@@ -41,7 +41,10 @@ public class BrushSizeDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String textvalue = brushSize.getText().toString();
-                        newSize = Integer.parseInt(textvalue);
+                        if (textvalue.isEmpty())
+                            newSize = 10;
+                        else
+                            newSize = Integer.parseInt(textvalue);
                         listener.changeBrush(newSize);
                     }
                 });

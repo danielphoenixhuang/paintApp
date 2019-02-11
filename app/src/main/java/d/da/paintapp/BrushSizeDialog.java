@@ -45,6 +45,10 @@ public class BrushSizeDialog extends AppCompatDialogFragment {
                             newSize = 10;
                         else
                             newSize = Integer.parseInt(textvalue);
+
+                        if (newSize < 1 || newSize > 1000)
+                            newSize = 10;
+
                         listener.changeBrush(newSize);
                     }
                 });

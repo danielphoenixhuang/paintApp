@@ -33,7 +33,6 @@ public class PaintView extends View {
 
     public PaintView(Context context) {
         this(context, null);
-
     }
 
     public PaintView(Context context, AttributeSet attrs) {
@@ -58,6 +57,11 @@ public class PaintView extends View {
 
         currentColor = DEFAULT_COLOR;
         drawWidth = brushSize;
+    }
+
+    public void setBrushSize(int size)
+    {
+        brushSize = size;
     }
 
     public int getCurrentColor()

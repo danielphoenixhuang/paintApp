@@ -8,12 +8,13 @@ import android.widget.Button;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BrushSizeDialog.BrushSizeDialogListener{
 
     private PaintView paintView;
     private Button clearButt;
     private Button colorPickButt;
     private Button backgroundPickerButt;
+    private Button brushSizeButt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         clearButt = (Button) findViewById(R.id.clearButt);
         colorPickButt = (Button) findViewById(R.id.colorPickButt);
         backgroundPickerButt = (Button) findViewById(R.id.backgroundPickerButt);
+        brushSizeButt = (Button) findViewById(R.id.changeBrushSizeButt);
+
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -50,7 +53,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        brushSizeButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openBrushSizeDialog();
+            }
+        });
+
     }
+
+    private void openBrushSizeDialog()
+    {
+        BrushSizeDialog brushSizeDialog = new BrushSizeDialog();
+        brushSizeDialog.show(getSupportFragmentManager(), "brush size dialog");
+    }
+
 
     private void openBackgroundPicker()
     {
@@ -82,5 +99,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         colorPick.show();
+    }
+
+    @Override
+    public void changeBrush(int brushSize) {
+        paintView.setBrushSize(brushSize);
     }
 }

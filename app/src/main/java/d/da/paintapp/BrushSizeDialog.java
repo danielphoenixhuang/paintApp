@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+
+//Create a new Dialog that lets you pick a brush size
 public class BrushSizeDialog extends AppCompatDialogFragment {
 
     private TextView brushSize;

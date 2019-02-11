@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements BrushSizeDialog.B
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.init(metrics);
 
+
+        //Initialize Click Listeners
         clearButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

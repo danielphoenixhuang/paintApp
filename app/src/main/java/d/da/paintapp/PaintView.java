@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class PaintView extends View {
 
     public int brushSize = 10;
-    public static final int DEFAULT_COLOR = Color.GREEN;
+    public static final int DEFAULT_COLOR = Color.BLACK;
     public static final int DEFAULT_BACKGROUND = Color.WHITE;
     private static final float tolerance = 5;
     private float X, Y;
@@ -85,6 +85,7 @@ public class PaintView extends View {
         invalidate();
     }
 
+    //Clear background back to default
     public void clear(){
         backgroundColor = DEFAULT_BACKGROUND;
         paths.clear();
@@ -97,6 +98,7 @@ public class PaintView extends View {
         canvas.save();
         mCanvas.drawColor(backgroundColor);
 
+        //For every path drawn, add it to paths
         for (DrawPath dp : paths)
         {
             mPaint.setColor(dp.color);
@@ -109,6 +111,7 @@ public class PaintView extends View {
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
         canvas.restore();
     }
+
 
     private void touchStart(float x, float y){
         mPath = new Path();
